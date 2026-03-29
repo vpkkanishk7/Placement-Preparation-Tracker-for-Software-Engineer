@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Global Placement Master</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="sidebar">
+        <div class="logo">Placement Preparation Tracker for Software Engineer</div>
+
+        <div class="nav-category">Overview</div>
+        <button class="nav-btn active" onclick="navigate('dashboard')">Analytics Dashboard</button>
+        <button class="nav-btn" onclick="navigate('job-tracker')">Job Applications</button>
+
+        <div class="nav-category">Technical Prep</div>
+        <button class="nav-btn" onclick="navigate('dsa-tracker')">DSA & Coding Tracker</button>
+        <button class="nav-btn" onclick="navigate('core-subjects')">Core Subjects</button>
+        <button class="nav-btn" onclick="navigate('portfolio')">My Projects</button>
+
+        <div class="nav-category">Assessment Prep</div>
+        <button class="nav-btn" onclick="navigate('aptitude')">Aptitude & Reasoning</button>
+        <button class="nav-btn" onclick="navigate('hr-guides')">HR Guides</button>
+    </div>
+
+    <div class="main-content">
+        <div class="topbar">
+            <input type="text" id="search" placeholder="Search anything...">
+            <div class="top-actions">
+                <button class="btn-outline" onclick="toggleTheme()">🌙 Toggle Theme</button>
+                <div class="streak">🔥 Streak: <span id="streak-count">0</span></div>
+            </div>
+        </div>
+
+
+        <div id="dashboard" class="section active">
+            <h1 class="header-title">Overall Placement Readiness</h1>
+            <div class="grid-cards">
+                <div class="card">
+                    <div class="card-title">DSA Progress</div>
+                    <div class="progress-track">
+                        <div id="dsa-progress-fill" class="progress-fill"></div>
+                    </div>
+                    <p id="dsa-progress-text" style="margin-top: 10px; font-size: 14px;">0 / 0 Problems Solved</p>
+                </div>
+                <div class="card">
+                    <div class="card-title">Aptitude Progress</div>
+                    <div class="progress-track">
+                        <div id="apt-progress-fill" class="progress-fill"></div>
+                    </div>
+                    <p id="apt-progress-text" style="margin-top: 10px; font-size: 14px;">0 / 0 Modules Completed</p>
+                </div>
+                <div class="card">
+                    <div class="card-title">Active Applications</div>
+                    <h2 id="app-count-text" style="font-size: 32px; color: var(--primary); margin-top: 10px;">0</h2>
+                    <p style="font-size: 14px; color: var(--text-muted);">Ongoing interview processes</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="job-tracker" class="section">
+            <h1 class="header-title">Job Application Tracker</h1>
+            <div class="card">
+                <div class="form-group">
+                    <input type="text" id="job-company" placeholder="Company Name (e.g., Google)">
+                    <input type="text" id="job-role" placeholder="Role (e.g., SDE)">
+                    <select id="job-status">
+                        <option value="Applied">Applied</option>
+                        <option value="Interview">Interviewing</option>
+                        <option value="Offered">Offered</option>
+                        <option value="Rejected">Rejected</option>
+                    </select>
+                    <button class="btn" onclick="addJob()">Add Job</button>
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Company</th>
+                            <th>Role</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="job-table-body"></tbody>
+                </table>
+            </div>
+        </div>
+
+        <div id="dsa-tracker" class="section">
+            <h1 class="header-title">Data Structures & Algorithms</h1>
+            <div class="card">
+                <p style="color: var(--text-muted); margin-bottom: 15px; font-size: 14px;">Select to automatically
+                    update your dashboard.</p>
+                <div id="dsa-container"></div>
+            </div>
+        </div>
+
+        <div id="core-subjects" class="section">
+            <h1 class="header-title">Core CS Subjects</h1>
+            <div class="grid-cards" id="core-container"></div>
+        </div>
+
+        <div id="aptitude" class="section">
+            <h1 class="header-title">Comprehensive Aptitude & Reasoning</h1>
+            <div class="card" style="padding-top: 10px;">
+                <div id="aptitude-container"></div>
+            </div>
+        </div>
+
+        <div id="portfolio" class="section">
+            <h1 class="header-title">Project & Portfolio Tracker</h1>
+            <div class="card">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Project Title</th>
+                            <th>Description</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="projects-container"></tbody>
+                </table>
+            </div>
+        </div>
+
+        <div id="hr-guides" class="section">
+            <h1 class="header-title">HR & Soft Skills Library</h1>
+            <div class="grid-cards" id="hr-container"></div>
+        </div>
+
+    </div>
+
+    <script src="data.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
